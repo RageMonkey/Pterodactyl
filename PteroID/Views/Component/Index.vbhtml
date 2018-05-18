@@ -11,13 +11,14 @@ End Code
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(Function(model) model.desc_short)
+         
+            @Html.ActionLink("Short Description", "Index", New With {.sortOrder = ViewBag.NameSortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.desc_long)
+            @Html.ActionLink("Long Description", "Index", New With {.sortOrder = ViewBag.NameSortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(Function(model) model.date_created)
+            @Html.ActionLink("Date Created", "Index", New With {.sortOrder = ViewBag.DateSortParm})
         </th>
         <th>
             Process
