@@ -1,0 +1,799 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Ptero2_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="desc_short" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="desc_long" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Component_log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyFieldID" Type="int" Nullable="false" />
+          <Property Name="AuditActionTypeENUM" Type="int" Nullable="false" />
+          <Property Name="DateTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="DataModel" Type="nvarchar" MaxLength="100" />
+          <Property Name="Changes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ValueBefore" Type="nvarchar(max)" />
+          <Property Name="ValueAfter" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ComponentProcess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComponentId" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComponentUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComponentId" Type="int" Nullable="false" />
+          <Property Name="Ptero_UserId" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhaseProcess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhaseId" Type="int" Nullable="false" />
+          <Property Name="ProcessId" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Processuser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessId" Type="int" Nullable="false" />
+          <Property Name="Ptero_UserId" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ptero_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="last_name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="user_email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Ptero_UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Component_log_KeyFieldID_Id">
+          <End Role="Component" Type="Self.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Component_log" Type="Self.Component_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Component_log">
+              <PropertyRef Name="KeyFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentProcess_Component_Id">
+          <End Role="Component" Type="Self.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentProcess" Type="Self.ComponentProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentProcess">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentProcess_ProcessType_Id">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentProcess" Type="Self.ComponentProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentProcess">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentUser_dbo_Component_Id">
+          <End Role="Component" Type="Self.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentUser" Type="Self.ComponentUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentUser">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentUser_dbo_Ptero_User_Id">
+          <End Role="Ptero_User" Type="Self.Ptero_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentUser" Type="Self.ComponentUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ptero_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentUser">
+              <PropertyRef Name="Ptero_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Phase_dbo_Phase_Id">
+          <End Role="Phase" Type="Self.Phase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PhaseProcess" Type="Self.PhaseProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhaseProcess">
+              <PropertyRef Name="PhaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Phase_dbo_Process_Id">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PhaseProcess" Type="Self.PhaseProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhaseProcess">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Processuser_dbo_Process_Id">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Processuser" Type="Self.Processuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Processuser">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Processuser_dbo_Ptero_User_Id">
+          <End Role="Ptero_User" Type="Self.Ptero_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Processuser" Type="Self.Processuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ptero_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Processuser">
+              <PropertyRef Name="Ptero_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRole_Ptero_User_Id">
+          <End Role="Ptero_User" Type="Self.Ptero_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ptero_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="Ptero_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRole_Role_Id">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Ptero2_dbModelStoreContainer">
+          <EntitySet Name="Component" EntityType="Self.Component" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Component_log" EntityType="Self.Component_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComponentProcess" EntityType="Self.ComponentProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComponentUser" EntityType="Self.ComponentUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phase" EntityType="Self.Phase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhaseProcess" EntityType="Self.PhaseProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Processuser" EntityType="Self.Processuser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ptero_User" EntityType="Self.Ptero_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Component_log_KeyFieldID_Id" Association="Self.FK_dbo_Component_log_KeyFieldID_Id">
+            <End Role="Component" EntitySet="Component" />
+            <End Role="Component_log" EntitySet="Component_log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentProcess_Component_Id" Association="Self.FK_dbo_ComponentProcess_Component_Id">
+            <End Role="Component" EntitySet="Component" />
+            <End Role="ComponentProcess" EntitySet="ComponentProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentProcess_ProcessType_Id" Association="Self.FK_dbo_ComponentProcess_ProcessType_Id">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="ComponentProcess" EntitySet="ComponentProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentUser_dbo_Component_Id" Association="Self.FK_dbo_ComponentUser_dbo_Component_Id">
+            <End Role="Component" EntitySet="Component" />
+            <End Role="ComponentUser" EntitySet="ComponentUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentUser_dbo_Ptero_User_Id" Association="Self.FK_dbo_ComponentUser_dbo_Ptero_User_Id">
+            <End Role="Ptero_User" EntitySet="Ptero_User" />
+            <End Role="ComponentUser" EntitySet="ComponentUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Phase_dbo_Phase_Id" Association="Self.FK_dbo_Phase_dbo_Phase_Id">
+            <End Role="Phase" EntitySet="Phase" />
+            <End Role="PhaseProcess" EntitySet="PhaseProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Phase_dbo_Process_Id" Association="Self.FK_dbo_Phase_dbo_Process_Id">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="PhaseProcess" EntitySet="PhaseProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Processuser_dbo_Process_Id" Association="Self.FK_dbo_Processuser_dbo_Process_Id">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Processuser" EntitySet="Processuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Processuser_dbo_Ptero_User_Id" Association="Self.FK_dbo_Processuser_dbo_Ptero_User_Id">
+            <End Role="Ptero_User" EntitySet="Ptero_User" />
+            <End Role="Processuser" EntitySet="Processuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRole_Ptero_User_Id" Association="Self.FK_dbo_UserRole_Ptero_User_Id">
+            <End Role="Ptero_User" EntitySet="Ptero_User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRole_Role_Id" Association="Self.FK_dbo_UserRole_Role_Id">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Ptero2_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="desc_short" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="desc_long" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ComponentProcesses" Relationship="Self.FK_dbo_ComponentProcess_Component_Id" FromRole="Component" ToRole="ComponentProcess" />
+          <NavigationProperty Name="ComponentUsers" Relationship="Self.FK_dbo_ComponentUser_dbo_Component_Id" FromRole="Component" ToRole="ComponentUser" />
+          <NavigationProperty Name="Component_log" Relationship="Ptero2_dbModel.FK_dbo_Component_log_KeyFieldID_Id" FromRole="Component" ToRole="Component_log" />
+        </EntityType>
+        <EntityType Name="ComponentProcess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComponentId" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Component" Relationship="Self.FK_dbo_ComponentProcess_Component_Id" FromRole="ComponentProcess" ToRole="Component" />
+          <NavigationProperty Name="Process" Relationship="Self.FK_dbo_ComponentProcess_ProcessType_Id" FromRole="ComponentProcess" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="ComponentUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComponentId" Type="Int32" Nullable="false" />
+          <Property Name="Ptero_UserId" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Component" Relationship="Self.FK_dbo_ComponentUser_dbo_Component_Id" FromRole="ComponentUser" ToRole="Component" />
+          <NavigationProperty Name="Ptero_User" Relationship="Self.FK_dbo_ComponentUser_dbo_Ptero_User_Id" FromRole="ComponentUser" ToRole="Ptero_User" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PhaseProcesses" Relationship="Self.FK_dbo_Phase_dbo_Phase_Id" FromRole="Phase" ToRole="PhaseProcess" />
+        </EntityType>
+        <EntityType Name="PhaseProcess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhaseId" Type="Int32" Nullable="false" />
+          <Property Name="ProcessId" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Phase" Relationship="Self.FK_dbo_Phase_dbo_Phase_Id" FromRole="PhaseProcess" ToRole="Phase" />
+          <NavigationProperty Name="Process" Relationship="Self.FK_dbo_Phase_dbo_Process_Id" FromRole="PhaseProcess" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ComponentProcesses" Relationship="Self.FK_dbo_ComponentProcess_ProcessType_Id" FromRole="Process" ToRole="ComponentProcess" />
+          <NavigationProperty Name="PhaseProcesses" Relationship="Self.FK_dbo_Phase_dbo_Process_Id" FromRole="Process" ToRole="PhaseProcess" />
+          <NavigationProperty Name="Processusers" Relationship="Self.FK_dbo_Processuser_dbo_Process_Id" FromRole="Process" ToRole="Processuser" />
+        </EntityType>
+        <EntityType Name="Processuser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessId" Type="Int32" Nullable="false" />
+          <Property Name="Ptero_UserId" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Process" Relationship="Self.FK_dbo_Processuser_dbo_Process_Id" FromRole="Processuser" ToRole="Process" />
+          <NavigationProperty Name="Ptero_User" Relationship="Self.FK_dbo_Processuser_dbo_Ptero_User_Id" FromRole="Processuser" ToRole="Ptero_User" />
+        </EntityType>
+        <EntityType Name="Ptero_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="user_email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ComponentUsers" Relationship="Self.FK_dbo_ComponentUser_dbo_Ptero_User_Id" FromRole="Ptero_User" ToRole="ComponentUser" />
+          <NavigationProperty Name="Processusers" Relationship="Self.FK_dbo_Processuser_dbo_Ptero_User_Id" FromRole="Ptero_User" ToRole="Processuser" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRole_Ptero_User_Id" FromRole="Ptero_User" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRole_Role_Id" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Ptero_UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Ptero_User" Relationship="Self.FK_dbo_UserRole_Ptero_User_Id" FromRole="UserRole" ToRole="Ptero_User" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_dbo_UserRole_Role_Id" FromRole="UserRole" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_dbo_ComponentProcess_Component_Id">
+          <End Role="Component" Type="Self.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentProcess" Type="Self.ComponentProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentProcess">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentUser_dbo_Component_Id">
+          <End Role="Component" Type="Self.Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentUser" Type="Self.ComponentUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentUser">
+              <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentProcess_ProcessType_Id">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentProcess" Type="Self.ComponentProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentProcess">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ComponentUser_dbo_Ptero_User_Id">
+          <End Role="Ptero_User" Type="Self.Ptero_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ComponentUser" Type="Self.ComponentUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ptero_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComponentUser">
+              <PropertyRef Name="Ptero_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Phase_dbo_Phase_Id">
+          <End Role="Phase" Type="Self.Phase" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PhaseProcess" Type="Self.PhaseProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhaseProcess">
+              <PropertyRef Name="PhaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Phase_dbo_Process_Id">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PhaseProcess" Type="Self.PhaseProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhaseProcess">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Processuser_dbo_Process_Id">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Processuser" Type="Self.Processuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Processuser">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Processuser_dbo_Ptero_User_Id">
+          <End Role="Ptero_User" Type="Self.Ptero_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Processuser" Type="Self.Processuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ptero_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Processuser">
+              <PropertyRef Name="Ptero_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRole_Ptero_User_Id">
+          <End Role="Ptero_User" Type="Self.Ptero_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ptero_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="Ptero_UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserRole_Role_Id">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Ptero2_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Components" EntityType="Self.Component" />
+          <EntitySet Name="ComponentProcesses" EntityType="Self.ComponentProcess" />
+          <EntitySet Name="ComponentUsers" EntityType="Self.ComponentUser" />
+          <EntitySet Name="Phases" EntityType="Self.Phase" />
+          <EntitySet Name="PhaseProcesses" EntityType="Self.PhaseProcess" />
+          <EntitySet Name="Processes" EntityType="Self.Process" />
+          <EntitySet Name="Processusers" EntityType="Self.Processuser" />
+          <EntitySet Name="Ptero_User" EntityType="Self.Ptero_User" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <AssociationSet Name="FK_dbo_ComponentProcess_Component_Id" Association="Self.FK_dbo_ComponentProcess_Component_Id">
+            <End Role="Component" EntitySet="Components" />
+            <End Role="ComponentProcess" EntitySet="ComponentProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentUser_dbo_Component_Id" Association="Self.FK_dbo_ComponentUser_dbo_Component_Id">
+            <End Role="Component" EntitySet="Components" />
+            <End Role="ComponentUser" EntitySet="ComponentUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentProcess_ProcessType_Id" Association="Self.FK_dbo_ComponentProcess_ProcessType_Id">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="ComponentProcess" EntitySet="ComponentProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ComponentUser_dbo_Ptero_User_Id" Association="Self.FK_dbo_ComponentUser_dbo_Ptero_User_Id">
+            <End Role="Ptero_User" EntitySet="Ptero_User" />
+            <End Role="ComponentUser" EntitySet="ComponentUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Phase_dbo_Phase_Id" Association="Self.FK_dbo_Phase_dbo_Phase_Id">
+            <End Role="Phase" EntitySet="Phases" />
+            <End Role="PhaseProcess" EntitySet="PhaseProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Phase_dbo_Process_Id" Association="Self.FK_dbo_Phase_dbo_Process_Id">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="PhaseProcess" EntitySet="PhaseProcesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Processuser_dbo_Process_Id" Association="Self.FK_dbo_Processuser_dbo_Process_Id">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="Processuser" EntitySet="Processusers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Processuser_dbo_Ptero_User_Id" Association="Self.FK_dbo_Processuser_dbo_Ptero_User_Id">
+            <End Role="Ptero_User" EntitySet="Ptero_User" />
+            <End Role="Processuser" EntitySet="Processusers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRole_Ptero_User_Id" Association="Self.FK_dbo_UserRole_Ptero_User_Id">
+            <End Role="Ptero_User" EntitySet="Ptero_User" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserRole_Role_Id" Association="Self.FK_dbo_UserRole_Role_Id">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <EntitySet Name="Component_log" EntityType="Ptero2_dbModel.Component_log" />
+          <AssociationSet Name="FK_dbo_Component_log_KeyFieldID_Id" Association="Ptero2_dbModel.FK_dbo_Component_log_KeyFieldID_Id">
+            <End Role="Component" EntitySet="Components" />
+            <End Role="Component_log" EntitySet="Component_log" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Component_log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyFieldID" Type="Int32" Nullable="false" />
+          <Property Name="AuditActionTypeENUM" Type="Int32" Nullable="false" />
+          <Property Name="DateTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataModel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Changes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValueBefore" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValueAfter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Component" Relationship="Ptero2_dbModel.FK_dbo_Component_log_KeyFieldID_Id" FromRole="Component_log" ToRole="Component" />
+        </EntityType>
+        <Association Name="FK_dbo_Component_log_KeyFieldID_Id">
+          <End Type="Ptero2_dbModel.Component" Role="Component" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Ptero2_dbModel.Component_log" Role="Component_log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Component_log">
+              <PropertyRef Name="KeyFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Ptero2_dbModelStoreContainer" CdmEntityContainer="Ptero2_dbEntities">
+          <EntitySetMapping Name="Components">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Component">
+              <MappingFragment StoreEntitySet="Component">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="desc_short" ColumnName="desc_short" />
+                <ScalarProperty Name="desc_long" ColumnName="desc_long" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComponentProcesses">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.ComponentProcess">
+              <MappingFragment StoreEntitySet="ComponentProcess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComponentUsers">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.ComponentUser">
+              <MappingFragment StoreEntitySet="ComponentUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+                <ScalarProperty Name="Ptero_UserId" ColumnName="Ptero_UserId" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phases">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Phase">
+              <MappingFragment StoreEntitySet="Phase">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhaseProcesses">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.PhaseProcess">
+              <MappingFragment StoreEntitySet="PhaseProcess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PhaseId" ColumnName="PhaseId" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processusers">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Processuser">
+              <MappingFragment StoreEntitySet="Processuser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="Ptero_UserId" ColumnName="Ptero_UserId" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ptero_User">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Ptero_User">
+              <MappingFragment StoreEntitySet="Ptero_User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ptero_UserId" ColumnName="Ptero_UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Component_log">
+            <EntityTypeMapping TypeName="Ptero2_dbModel.Component_log">
+              <MappingFragment StoreEntitySet="Component_log">
+                <ScalarProperty Name="ValueAfter" ColumnName="ValueAfter" />
+                <ScalarProperty Name="ValueBefore" ColumnName="ValueBefore" />
+                <ScalarProperty Name="Changes" ColumnName="Changes" />
+                <ScalarProperty Name="DataModel" ColumnName="DataModel" />
+                <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+                <ScalarProperty Name="AuditActionTypeENUM" ColumnName="AuditActionTypeENUM" />
+                <ScalarProperty Name="KeyFieldID" ColumnName="KeyFieldID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

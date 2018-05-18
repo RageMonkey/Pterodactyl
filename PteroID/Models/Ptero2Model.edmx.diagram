@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f30ad6d51b4d4ddaa456b2e0bfabd569" Name="Diagram1">
+        <EntityTypeShape EntityType="Ptero2_dbModel.Component" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.ComponentProcess" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.ComponentUser" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.Phase" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.PhaseProcess" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.Process" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.Processuser" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.Ptero_User" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.Role" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.UserRole" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_ComponentProcess_Component_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_ComponentUser_dbo_Component_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_ComponentProcess_ProcessType_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_ComponentUser_dbo_Ptero_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_Phase_dbo_Phase_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_Phase_dbo_Process_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_Processuser_dbo_Process_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_Processuser_dbo_Ptero_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_UserRole_Ptero_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_UserRole_Role_Id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Ptero2_dbModel.Component_log" Width="1.5" PointX="3" PointY="13.5" />
+        <AssociationConnector Association="Ptero2_dbModel.FK_dbo_Component_log_KeyFieldID_Id" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

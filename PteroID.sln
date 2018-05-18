@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PteroID", "PteroID\PteroID.vbproj", "{17225E0B-8034-492C-BA64-92CFD1624E11}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Ptero2_db", "..\PteroID\Ptero2_db\Ptero2_db.sqlproj", "{D5C45F07-0B2A-4713-AA80-5290AB562E91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17225E0B-8034-492C-BA64-92CFD1624E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17225E0B-8034-492C-BA64-92CFD1624E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17225E0B-8034-492C-BA64-92CFD1624E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17225E0B-8034-492C-BA64-92CFD1624E11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C45F07-0B2A-4713-AA80-5290AB562E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5C45F07-0B2A-4713-AA80-5290AB562E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C45F07-0B2A-4713-AA80-5290AB562E91}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D5C45F07-0B2A-4713-AA80-5290AB562E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5C45F07-0B2A-4713-AA80-5290AB562E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C45F07-0B2A-4713-AA80-5290AB562E91}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DEB0B22-EE7F-42C1-880C-EF9AD4FAFBDC}
+	EndGlobalSection
+EndGlobal

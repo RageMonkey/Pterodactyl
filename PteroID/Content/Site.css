@@ -1,0 +1,76 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.comp_circle_100 {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    line-height: 100px;
+    background: #000;
+    font-size: 20px;
+}
+
+.comp_circle_80 {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    text-align: center;
+    line-height: 80px;
+    background: #000;
+    font-size: 25px;
+}
+
+.comp_circle_60 {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    text-align: center;
+    line-height: 60px;
+    font-size: 15px;
+}
+
+.comp_circle_40 {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+.comp_circle_20 {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    text-align: center;
+    line-height: 20px;
+    font-size: 9px;
+}
