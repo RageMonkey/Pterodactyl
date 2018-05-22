@@ -15,6 +15,11 @@ DELETE FROM Ptero2_db.dbo.Ptero_User
 DELETE FROM Ptero2_db.dbo.Process
 DELETE FROM Ptero2_db.dbo.Phase
 DELETE FROM Ptero2_db.dbo.Role
+/*DROP TABLE Ptero2_db.dbo.AspNetUserLogins
+DROP TABLE Ptero2_db.dbo.AspNetUsers */
+/*DELETE FROM Ptero2_db.dbo.AspNetUserRoles
+DELETE FROM Ptero2_db.dbo.AspNetUserClaims */
+/*DELETE FROM Ptero2_db.dbo.AspNetRoles */
 
 DBCC CHECKIDENT('Ptero2_db.dbo.Ptero_User',RESEED,0)
 /*DBCC CHECKIDENT('Ptero2_db.dbo.Ptero_User') */
@@ -127,3 +132,142 @@ WHEN NOT MATCHED BY TARGET THEN
 INSERT (Description,date_created)
 VALUES (Description,date_created);
 GO
+
+
+/* Component Users */
+MERGE INTO Ptero2_db.dbo.ComponentUser AS Target
+USING (VALUES 
+(1,1,3,'2018-03-19'),
+(2,4,1,'2017-12-12'),
+(3,5,2,'2018-01-01')
+)
+AS Source (Id,ComponentId,Ptero_UserId,date_created)
+ON Target.Id = Source.Id
+WHEN NOT MATCHED BY TARGET THEN
+INSERT (ComponentId,Ptero_UserId,date_created)
+VALUES (ComponentId,Ptero_UserId,date_created);
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AspNetUsers] (
+    [Id]                   NVARCHAR (128) NOT NULL,
+    [Email]                NVARCHAR (256) NULL,
+    [EmailConfirmed]       BIT            NOT NULL,
+    [PasswordHash]         NVARCHAR (MAX) NULL,
+    [SecurityStamp]        NVARCHAR (MAX) NULL,
+    [PhoneNumber]          NVARCHAR (MAX) NULL,
+    [PhoneNumberConfirmed] BIT            NOT NULL,
+    [TwoFactorEnabled]     BIT            NOT NULL,
+    [LockoutEndDateUtc]    DATETIME       NULL,
+    [LockoutEnabled]       BIT            NOT NULL,
+    [AccessFailedCount]    INT            NOT NULL,
+    [UserName]             NVARCHAR (256) NOT NULL
+);
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex]
+    ON [dbo].[AspNetUsers]([UserName] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUsers]
+    ADD CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC);
+
+	CREATE TABLE [dbo].[AspNetUserLogins] (
+    [LoginProvider] NVARCHAR (128) NOT NULL,
+    [ProviderKey]   NVARCHAR (128) NOT NULL,
+    [UserId]        NVARCHAR (128) NOT NULL
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_UserId]
+    ON [dbo].[AspNetUserLogins]([UserId] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserLogins]
+    ADD CONSTRAINT [PK_dbo.AspNetUserLogins] PRIMARY KEY CLUSTERED ([LoginProvider] ASC, [ProviderKey] ASC, [UserId] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserLogins]
+    ADD CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
+
+	CREATE TABLE [dbo].[AspNetUserClaims] (
+    [Id]         INT            IDENTITY (1, 1) NOT NULL,
+    [UserId]     NVARCHAR (128) NOT NULL,
+    [ClaimType]  NVARCHAR (MAX) NULL,
+    [ClaimValue] NVARCHAR (MAX) NULL
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_UserId]
+    ON [dbo].[AspNetUserClaims]([UserId] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserClaims]
+    ADD CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED ([Id] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserClaims]
+    ADD CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
+
+
+	CREATE TABLE [dbo].[AspNetRoles] (
+    [Id]   NVARCHAR (128) NOT NULL,
+    [Name] NVARCHAR (256) NOT NULL
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex]
+    ON [dbo].[AspNetRoles]([Name] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetRoles]
+    ADD CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED ([Id] ASC);
+
+
+CREATE TABLE [dbo].[AspNetUserRoles] (
+    [UserId] NVARCHAR (128) NOT NULL,
+    [RoleId] NVARCHAR (128) NOT NULL
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_UserId]
+    ON [dbo].[AspNetUserRoles]([UserId] ASC);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_RoleId]
+    ON [dbo].[AspNetUserRoles]([RoleId] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]
+    ADD CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED ([UserId] ASC, [RoleId] ASC);
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]
+    ADD CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[AspNetRoles] ([Id]) ON DELETE CASCADE;
+
+
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]
+    ADD CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE;
+
+
+
+

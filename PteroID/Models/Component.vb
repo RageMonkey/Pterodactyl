@@ -6,19 +6,18 @@
 '     Manual changes to this file will be overwritten if the code is regenerated.
 ' </auto-generated>
 '------------------------------------------------------------------------------
+
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Component
-        Public Property Id As Integer
-        Public Property desc_short As String
-        Public Property desc_long As String
-        Public Property date_created As Date
+Partial Public Class Component
+    Public Property Id As Integer
+    Public Property desc_short As String
+    Public Property desc_long As String
+    Public Property date_created As Date
 
-        Public Overridable Property ComponentProcesses As ICollection(Of ComponentProcess) = New HashSet(Of ComponentProcess)
-        Public Overridable Property ComponentUsers As ICollection(Of ComponentUser) = New HashSet(Of ComponentUser)
-        Public Overridable Property Component_log As ICollection(Of Component_log) = New HashSet(Of Component_log)
+    Public Overridable Property ComponentProcesses As ICollection(Of ComponentProcess) = New HashSet(Of ComponentProcess)
+    Public Overridable Property ComponentUsers As ICollection(Of ComponentUser) = New HashSet(Of ComponentUser)
+    Public Overridable Property Component_log As ICollection(Of Component_log) = New HashSet(Of Component_log)
 
-    End Class
-End Namespace
+End Class

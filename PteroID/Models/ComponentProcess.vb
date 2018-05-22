@@ -10,15 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class ComponentProcess
-        Public Property Id As Integer
-        Public Property ComponentId As Integer
-        Public Property ProcessId As Integer
-        Public Property date_created As Date
+Partial Public Class ComponentProcess
+    Public Property Id As Integer
+    Public Property ComponentId As Integer
+    Public Property ProcessId As Integer
+    Public Property date_created As Date
 
-        Public Overridable Property Component As Component
-        Public Overridable Property Process As Process
+    Public Overridable Property Component As Component
+    Public Overridable Property Process As Process
 
-    End Class
-End Namespace
+End Class

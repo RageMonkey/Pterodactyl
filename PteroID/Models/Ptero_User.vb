@@ -10,17 +10,15 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Ptero_User
-        Public Property Id As Integer
-        Public Property first_name As String
-        Public Property last_name As String
-        Public Property user_email As String
-        Public Property date_created As Date
+Partial Public Class Ptero_User
+    Public Property Id As Integer
+    Public Property first_name As String
+    Public Property last_name As String
+    Public Property user_email As String
+    Public Property date_created As Date
 
-        Public Overridable Property ComponentUsers As ICollection(Of ComponentUser) = New HashSet(Of ComponentUser)
-        Public Overridable Property Processusers As ICollection(Of Processuser) = New HashSet(Of Processuser)
-        Public Overridable Property UserRoles As ICollection(Of UserRole) = New HashSet(Of UserRole)
+    Public Overridable Property ComponentUsers As ICollection(Of ComponentUser) = New HashSet(Of ComponentUser)
+    Public Overridable Property Processusers As ICollection(Of Processuser) = New HashSet(Of Processuser)
+    Public Overridable Property UserRoles As ICollection(Of UserRole) = New HashSet(Of UserRole)
 
-    End Class
-End Namespace
+End Class

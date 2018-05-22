@@ -210,6 +210,7 @@
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
     <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\Component_old_Controller.vb" />
     <Compile Include="Controllers\ComponentController.vb" />
     <Compile Include="Controllers\ComponentsController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
@@ -385,11 +386,18 @@
     <Content Include="Views\Component\Index.vbhtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\ComponentPlus\Create.vbhtml" />
+    <Content Include="Views\ComponentPlus\Delete.vbhtml" />
+    <Content Include="Views\ComponentPlus\Details.vbhtml" />
+    <Content Include="Views\ComponentPlus\Edit.vbhtml" />
+    <Content Include="Views\ComponentPlus\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

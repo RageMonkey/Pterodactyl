@@ -10,13 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Phase
-        Public Property Id As Integer
-        Public Property Description As String
-        Public Property date_created As Date
+Partial Public Class Phase
+    Public Property Id As Integer
+    Public Property Description As String
+    Public Property date_created As Date
 
-        Public Overridable Property PhaseProcesses As ICollection(Of PhaseProcess) = New HashSet(Of PhaseProcess)
+    Public Overridable Property PhaseProcesses As ICollection(Of PhaseProcess) = New HashSet(Of PhaseProcess)
 
-    End Class
-End Namespace
+End Class

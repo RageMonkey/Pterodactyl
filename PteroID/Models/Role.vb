@@ -10,13 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Role
-        Public Property Id As Integer
-        Public Property Description As Integer
-        Public Property date_created As Date
+Partial Public Class Role
+    Public Property Id As Integer
+    Public Property Description As String
+    Public Property date_created As Date
 
-        Public Overridable Property UserRoles As ICollection(Of UserRole) = New HashSet(Of UserRole)
+    Public Overridable Property UserRoles As ICollection(Of UserRole) = New HashSet(Of UserRole)
 
-    End Class
-End Namespace
+End Class

@@ -10,15 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Processuser
-        Public Property Id As Integer
-        Public Property ProcessId As Integer
-        Public Property Ptero_UserId As Integer
-        Public Property date_created As Date
+Partial Public Class Processuser
+    Public Property Id As Integer
+    Public Property ProcessId As Integer
+    Public Property Ptero_UserId As Integer
+    Public Property date_created As Date
 
-        Public Overridable Property Process As Process
-        Public Overridable Property Ptero_User As Ptero_User
+    Public Overridable Property Process As Process
+    Public Overridable Property Ptero_User As Ptero_User
 
-    End Class
-End Namespace
+End Class

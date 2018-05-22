@@ -10,15 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class ComponentUser
-        Public Property Id As Integer
-        Public Property ComponentId As Integer
-        Public Property Ptero_UserId As Integer
-        Public Property date_created As Date
+Partial Public Class ComponentUser
+    Public Property Id As Integer
+    Public Property ComponentId As Integer
+    Public Property Ptero_UserId As Integer
+    Public Property date_created As Date
 
-        Public Overridable Property Component As Component
-        Public Overridable Property Ptero_User As Ptero_User
+    Public Overridable Property Component As Component
+    Public Overridable Property Ptero_User As Ptero_User
 
-    End Class
-End Namespace
+End Class

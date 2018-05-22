@@ -10,15 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Process
-        Public Property Id As Integer
-        Public Property Description As String
-        Public Property date_created As Date
+Partial Public Class Process
+    Public Property Id As Integer
+    Public Property Description As String
+    Public Property date_created As Date
 
-        Public Overridable Property ComponentProcesses As ICollection(Of ComponentProcess) = New HashSet(Of ComponentProcess)
-        Public Overridable Property PhaseProcesses As ICollection(Of PhaseProcess) = New HashSet(Of PhaseProcess)
-        Public Overridable Property Processusers As ICollection(Of Processuser) = New HashSet(Of Processuser)
+    Public Overridable Property ComponentProcesses As ICollection(Of ComponentProcess) = New HashSet(Of ComponentProcess)
+    Public Overridable Property PhaseProcesses As ICollection(Of PhaseProcess) = New HashSet(Of PhaseProcess)
+    Public Overridable Property Processusers As ICollection(Of Processuser) = New HashSet(Of Processuser)
 
-    End Class
-End Namespace
+End Class

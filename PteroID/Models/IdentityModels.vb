@@ -18,6 +18,7 @@ End Class
 Public Class ApplicationDbContext
     Inherits IdentityDbContext(Of ApplicationUser)
     Public Sub New()
+        '220518  built separate connection string just for Identity - it doens't like metadata tags in strings
         MyBase.New("DefaultConnection", throwIfV1Schema:=False)
     End Sub
 

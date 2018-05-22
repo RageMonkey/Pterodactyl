@@ -45,9 +45,9 @@ Partial Public Class Startup
         '   consumerKey:="",
         '   consumerSecret:="")
 
-        'app.UseFacebookAuthentication(
-        '   appId:="",
-        '   appSecret:="")
+        app.UseFacebookAuthentication(
+           appId:="172304363453064",
+           appSecret:="9f0f40ce84e57fd764e64e34c39fa63c")
 
         'app.UseGoogleAuthentication(New GoogleOAuth2AuthenticationOptions() With {
         '   .ClientId = "",

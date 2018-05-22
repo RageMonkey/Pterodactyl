@@ -94,7 +94,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="date_created" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRole">
@@ -415,7 +415,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="date_created" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRole_Role_Id" FromRole="Role" ToRole="UserRole" />
         </EntityType>

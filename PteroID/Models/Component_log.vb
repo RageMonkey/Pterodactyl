@@ -10,18 +10,16 @@
 Imports System
 Imports System.Collections.Generic
 
-Namespace Models
-    Partial Public Class Component_log
-        Public Property Id As Integer
-        Public Property KeyFieldID As Integer
-        Public Property AuditActionTypeENUM As Integer
-        Public Property DateTimeStamp As Date
-        Public Property DataModel As String
-        Public Property Changes As String
-        Public Property ValueBefore As String
-        Public Property ValueAfter As String
+Partial Public Class Component_log
+    Public Property Id As Integer
+    Public Property KeyFieldID As Integer
+    Public Property AuditActionTypeENUM As Integer
+    Public Property DateTimeStamp As Date
+    Public Property DataModel As String
+    Public Property Changes As String
+    Public Property ValueBefore As String
+    Public Property ValueAfter As String
 
-        Public Overridable Property Component As Component
+    Public Overridable Property Component As Component
 
-    End Class
-End Namespace
+End Class
