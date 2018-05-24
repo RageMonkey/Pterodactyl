@@ -1,15 +1,14 @@
-﻿@ModelType Models.Process
+﻿@ModelType Process
 @Code
     ViewData("Title") = "Edit"
 End Code
 
-<h2>Edit</h2>
+<h2>Edit a Process</h2>
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
 
     @<div class="form-horizontal">
-        <h4>Process</h4>
         <hr />
         @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
         @Html.HiddenFor(Function(model) model.Id)

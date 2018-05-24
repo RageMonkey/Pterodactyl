@@ -53,6 +53,18 @@ Public Class LoginViewModel
     <Display(Name:="Remember me?")>
     Public Property RememberMe As Boolean
 End Class
+'240518
+Public Class AllAccountsViewModel
+    <Required>
+    <Display(Name:="Email")>
+    <EmailAddress>
+    Public Property Email As String
+
+    <Required>
+    <Display(Name:="User Name")>
+    Public Property UserName As String
+
+End Class
 
 Public Class RegisterViewModel
     <Required>

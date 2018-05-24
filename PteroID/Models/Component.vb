@@ -9,6 +9,8 @@
 
 Imports System
 Imports System.Collections.Generic
+
+<System.ComponentModel.DataAnnotations.MetadataTypeAttribute(GetType(ComponentMetadata))>
 Partial Public Class Component
     Public Property Id As Integer
     Public Property desc_short As String

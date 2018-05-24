@@ -10,6 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
+<System.ComponentModel.DataAnnotations.MetadataTypeAttribute(GetType(ProcessMetadata))>
 Partial Public Class Process
     Public Property Id As Integer
     Public Property Description As String

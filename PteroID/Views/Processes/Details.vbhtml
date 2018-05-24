@@ -1,12 +1,11 @@
-﻿@ModelType Models.Process
+﻿@ModelType Process
 @Code
     ViewData("Title") = "Details"
 End Code
 
-<h2>Details</h2>
+<h2>Process Details</h2>
 
 <div>
-    <h4>Process</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>

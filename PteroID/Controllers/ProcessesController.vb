@@ -10,6 +10,7 @@ Imports PteroID
 'Imports PteroID.Models
 
 Namespace Controllers
+    <Authorize>
     Public Class ProcessesController
         Inherits System.Web.Mvc.Controller
 
@@ -51,7 +52,7 @@ Namespace Controllers
             Return View(process)
         End Function
 
-        ' GET: Processes/Edit/5
+        ' GET: Processes/Edit/5 
         Function Edit(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)

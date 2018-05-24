@@ -74,3 +74,15 @@ textarea {
     line-height: 20px;
     font-size: 9px;
 }
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.clicked {
+    background: green;
+}
+
+.un-clicked {
+    background: blue;
+}

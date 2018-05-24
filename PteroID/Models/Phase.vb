@@ -10,6 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
+<System.ComponentModel.DataAnnotations.MetadataTypeAttribute(GetType(PhaseMetadata))>
 Partial Public Class Phase
     Public Property Id As Integer
     Public Property Description As String

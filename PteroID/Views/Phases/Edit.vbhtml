@@ -1,15 +1,14 @@
-﻿@ModelType Models.Phase
+﻿@ModelType Phase
 @Code
     ViewData("Title") = "Edit"
 End Code
 
-<h2>Edit</h2>
+<h2>Edit this Phase</h2>
 
 @Using (Html.BeginForm())
     @Html.AntiForgeryToken()
     
     @<div class="form-horizontal">
-        <h4>Phase</h4>
         <hr />
         @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
         @Html.HiddenFor(Function(model) model.Id)

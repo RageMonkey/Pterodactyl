@@ -1,12 +1,11 @@
-﻿@ModelType Models.Phase
+﻿@ModelType Phase
 @Code
     ViewData("Title") = "Details"
 End Code
 
-<h2>Details</h2>
+<h2>Phase Details</h2>
 
 <div>
-    <h4>Phase</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>

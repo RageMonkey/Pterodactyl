@@ -334,6 +334,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\INFS3202.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -358,7 +359,6 @@
     <Content Include="Views\Account\VerifyCode.vbhtml" />
     <Content Include="Views\Manage\AddPhoneNumber.vbhtml" />
     <Content Include="Views\Manage\ChangePassword.vbhtml" />
-    <Content Include="Views\Manage\Index.vbhtml" />
     <Content Include="Views\Manage\ManageLogins.vbhtml" />
     <Content Include="Views\Manage\SetPassword.vbhtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.vbhtml" />
@@ -391,6 +391,7 @@
     <Content Include="Views\ComponentPlus\Details.vbhtml" />
     <Content Include="Views\ComponentPlus\Edit.vbhtml" />
     <Content Include="Views\ComponentPlus\Index.vbhtml" />
+    <Content Include="Views\Manage\List.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

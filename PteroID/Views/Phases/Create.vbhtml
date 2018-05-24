@@ -1,15 +1,14 @@
-﻿@ModelType Models.Phase
+﻿@ModelType Phase
 @Code
     ViewData("Title") = "Create"
 End Code
 
-<h2>Create</h2>
+<h2>Create a Phase</h2>
 
 @Using (Html.BeginForm()) 
     @Html.AntiForgeryToken()
     
     @<div class="form-horizontal">
-        <h4>Phase</h4>
         <hr />
         @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
         <div class="form-group">

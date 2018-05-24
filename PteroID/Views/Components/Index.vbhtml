@@ -1,9 +1,9 @@
 ﻿@ModelType IEnumerable(Of Component)
 @Code
-    ViewData("Title") = "Index"
+    ViewData("Title") = "Components"
 End Code
 
-<h2>Index</h2>
+<h2>Components</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")

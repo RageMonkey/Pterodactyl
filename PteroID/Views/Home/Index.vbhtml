@@ -3,29 +3,31 @@
 End Code
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <h1>Components (= ideas)</h1>
+    <p class="lead">You have JIRAs for specific tasks you are working on, and there is a wealth of Project Management software for projects that have been signed off and deadlines set.</p>
+    <p>  But what do you do with all the ideas, the back-of-napkin scribblings, the middle of the night lightbulb moments?</p>
+  </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+        <h2>Keep them here!</h2>
+        <p>This site is as configurable as you want it to be.  Put as many ideas (components) as you want into it, and track 
+        them through every stage in the 'All Together' view in the top bar.           
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+       
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>How?</h2>
+        <p>
+            In the left hand menu you will see buttons for each of the sets of data you need to work with. Here you can configure how many Processes
+            a Component needs to step through, and how many Phases each Process also steps through..
+        </p>
+   
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>What else?</h2>
+        <p>We are soon adding 'Strategies' so you can measure each of your components for how it fits with your internal strategies.</p>
+        <p>  And if you are interested in the ideas behind this way of tracking ideas</p>
+        <p><a class="btn btn-default" href="https://www.pmi.org/">Portfolio Theory &raquo;</a></p>
     </div>
 </div>

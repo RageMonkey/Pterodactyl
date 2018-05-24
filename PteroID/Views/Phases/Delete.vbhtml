@@ -1,13 +1,12 @@
-﻿@ModelType Models.Phase
+﻿@ModelType Phase
 @Code
     ViewData("Title") = "Delete"
 End Code
 
-<h2>Delete</h2>
+<h2>Delete this Phase</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Phase</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>

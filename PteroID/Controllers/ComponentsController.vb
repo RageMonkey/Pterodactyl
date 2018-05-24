@@ -10,6 +10,7 @@ Imports PteroID
 'Imports PteroID.Models
 
 Namespace Controllers
+    <Authorize>
     Public Class ComponentsController
         Inherits System.Web.Mvc.Controller
 

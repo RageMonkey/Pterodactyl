@@ -13,30 +13,33 @@ Public Class ComponentMetadata
         <StringLength(180, ErrorMessage:="Long name cannot exceed 180 characters")>
         Public desc_long As Object
 
-        <DisplayFormat(DataFormatString:="{0:d}")>
-        <DataType(DataType.Date)>
-        Public date_created As Object
-    End Class
+    <DisplayFormat(DataFormatString:="{0:d}")>
+    <DataType(DataType.Date)>
+    <Display(Name:="Date Created")>
+    Public date_created As Object
+End Class
 
     Public Class ProcessMetadata
         <StringLength(20, ErrorMessage:="Description cannot exceed 20 characters")>
         <Required>
         Public Description As Object
 
-        <DisplayFormat(DataFormatString:="{0:d}")>
-        <DataType(DataType.Date)>
-        Public date_created As Object
-    End Class
+    <DisplayFormat(DataFormatString:="{0:d}")>
+    <DataType(DataType.Date)>
+    <Display(Name:="Date Created")>
+    Public date_created As Object
+End Class
 
     Public Class PhaseMetadata
         <StringLength(20, ErrorMessage:="Description cannot exceed 20 characters")>
         <Required>
         Public Description As Object
 
-        <DisplayFormat(DataFormatString:="{0:d}")>
-        <DataType(DataType.Date)>
-        Public date_created As Object
-    End Class
+    <DisplayFormat(DataFormatString:="{0:d}")>
+    <DataType(DataType.Date)>
+    <Display(Name:="Date Created")>
+    Public date_created As Object
+End Class
     Public Class Ptero_UserMetadata
 
         <StringLength(20, ErrorMessage:="First Name cannot exceed 20 characters")>
@@ -55,24 +58,27 @@ Public Class ComponentMetadata
         <Required>
         Public user_email As Object
 
-        <DisplayFormat(DataFormatString:="{0:d}")>
-        <DataType(DataType.Date)>
-        Public date_created As Object
-    End Class
+    <DisplayFormat(DataFormatString:="{0:d}")>
+    <DataType(DataType.Date)>
+    <Display(Name:="Date Created")>
+    Public date_created As Object
+End Class
 
     Public Class RoleMetadata
         <StringLength(20, ErrorMessage:="Description cannot exceed 20 characters")>
         <Required>
         Public Description As Object
 
-        <DisplayFormat(DataFormatString:="{0:d}")>
-        <DataType(DataType.Date)>
-        Public date_created As Object
-    End Class
+    <DisplayFormat(DataFormatString:="{0:d}")>
+    <DataType(DataType.Date)>
+    <Display(Name:="Date Created")>
+    Public date_created As Object
+End Class
 
     Public Class UserRoleMetadata
 
-        <DisplayFormat(DataFormatString:="{0:d}")>
-        <DataType(DataType.Date)>
-        Public date_created As Object
-    End Class
+    <DisplayFormat(DataFormatString:="{0:d}")>
+    <DataType(DataType.Date)>
+    <Display(Name:="Date Created")>
+    Public date_created As Object
+End Class

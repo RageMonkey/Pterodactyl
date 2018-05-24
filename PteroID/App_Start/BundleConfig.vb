@@ -4,8 +4,10 @@ Public Module BundleConfig
     ' For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
     Public Sub RegisterBundles(ByVal bundles As BundleCollection)
 
+        '240518 Add in toggle js
         bundles.Add(New ScriptBundle("~/bundles/jquery").Include(
-                    "~/Scripts/jquery-{version}.js"))
+                    "~/Scripts/jquery-{version}.js",
+                     "~/Scripts/INFS3202.js"))
 
         bundles.Add(New ScriptBundle("~/bundles/jqueryval").Include(
                     "~/Scripts/jquery.validate*"))

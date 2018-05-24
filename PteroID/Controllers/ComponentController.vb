@@ -11,6 +11,7 @@ Imports PteroID
 Imports PteroID.ViewModels
 
 Namespace Controllers
+    <Authorize>
     Public Class ComponentController
         Inherits System.Web.Mvc.Controller
 
@@ -34,6 +35,7 @@ Namespace Controllers
             '   Next
             '  ViewData("ProcDesc") = pd
 
+            Dim components = db.Components.Include(Function(c) c.ComponentProcesses.Select(Function(p) p.Process)).Include(Function(c) c.ComponentUsers.Select(Function(u) u.Ptero_User))
 
             viewModel.Components = db.Components.Include(Function(c) c.ComponentProcesses).Include(Function(c) c.ComponentUsers)
 

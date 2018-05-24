@@ -71,7 +71,15 @@ Public Class ManageController
               .Message = message
         })
     End Function
+    '240518 Add list of users
+    Public Function List() As ActionResult
+        Dim users As List(Of AllAccountsViewModel)
+        ' User.Identity
+        ' Dim db As UserManager(Of User.)
+        '   Dim allusers = db.Users.ToList()
 
+        Return View()
+    End Function
     '
     ' GET: /Manage/AddPhoneNumber
     Public Function AddPhoneNumber() As ActionResult
