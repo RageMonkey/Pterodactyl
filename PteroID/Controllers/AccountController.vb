@@ -324,6 +324,7 @@ Public Class AccountController
 
     '
     ' POST: /Account/ExternalLoginConfirmation
+    '240518  Update for facebook PoC
     <HttpPost>
     <AllowAnonymous>
     <ValidateAntiForgeryToken>

@@ -7,7 +7,7 @@ Imports System.Net
 Imports System.Web
 Imports System.Web.Mvc
 Imports PteroID
-Imports PteroID.Models
+'Imports PteroID.Models
 
 Namespace Controllers
     Public Class ComponentsController

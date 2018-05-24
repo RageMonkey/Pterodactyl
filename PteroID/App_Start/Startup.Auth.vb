@@ -45,12 +45,13 @@ Partial Public Class Startup
         '   consumerKey:="",
         '   consumerSecret:="")
 
+        '220518  add facebook keys from developers.facebook.com
         app.UseFacebookAuthentication(
            appId:="172304363453064",
            appSecret:="9f0f40ce84e57fd764e64e34c39fa63c")
 
-        'app.UseGoogleAuthentication(New GoogleOAuth2AuthenticationOptions() With {
-        '   .ClientId = "",
-        '   .ClientSecret = ""})
+        app.UseGoogleAuthentication(New GoogleOAuth2AuthenticationOptions() With {
+           .ClientId = "1036497971839-c8rbc5jns070ckquid8c8ghffjdouruu.apps.googleusercontent.com",
+           .ClientSecret = "lLHA_a-vRLRjsUOo6NNpZU3U"})
     End Sub
 End Class

@@ -1,4 +1,4 @@
-﻿@ModelType IEnumerable(Of Models.Process)
+﻿@ModelType IEnumerable(Of Process)
 @Code
 ViewData("Title") = "Index"
 End Code

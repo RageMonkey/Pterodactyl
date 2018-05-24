@@ -1,4 +1,4 @@
-﻿@ModelType IEnumerable(Of Models.Component)
+﻿@ModelType IEnumerable(Of Component)
 @Code
     ViewData("Title") = "Index"
 End Code

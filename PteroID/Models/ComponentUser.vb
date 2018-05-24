@@ -8,6 +8,7 @@
 '------------------------------------------------------------------------------
 
 Imports System
+'Imports PteroID.Models
 Imports System.Collections.Generic
 
 Partial Public Class ComponentUser

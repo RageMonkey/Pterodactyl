@@ -1,4 +1,4 @@
-﻿@ModelType IEnumerable(Of Models.Phase)
+﻿@ModelType IEnumerable(Of Phase)
 @Code
 ViewData("Title") = "Index"
 End Code

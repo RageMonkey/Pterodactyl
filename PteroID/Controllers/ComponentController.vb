@@ -7,7 +7,7 @@ Imports System.Net
 Imports System.Web
 Imports System.Web.Mvc
 Imports PteroID
-Imports PteroID.Models
+'Imports PteroID.Models
 Imports PteroID.ViewModels
 
 Namespace Controllers
@@ -22,6 +22,7 @@ Namespace Controllers
             ViewBag.NameSortParm = If(String.IsNullOrEmpty(sortOrder), "desc_short", String.Empty)
             ViewBag.DateSortParm = If(sortOrder = "Date", "date_created", "Date")
             'Process Descriptions
+
             Dim pd(db.Components.Count - 1) As String
             'Process Owners
             Dim po(db.Components.Count - 1) As String

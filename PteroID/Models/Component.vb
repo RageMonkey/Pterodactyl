@@ -9,7 +9,6 @@
 
 Imports System
 Imports System.Collections.Generic
-
 Partial Public Class Component
     Public Property Id As Integer
     Public Property desc_short As String

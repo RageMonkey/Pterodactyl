@@ -1,4 +1,4 @@
-﻿Imports PteroID.Models
+﻿'Imports PteroID.Models
 
 Namespace ViewModels
 
